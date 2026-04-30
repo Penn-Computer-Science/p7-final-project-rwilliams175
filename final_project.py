@@ -18,7 +18,7 @@ def initial_page():
     def create_login_field():
         button.destroy()
         buttontwo.destroy()
-        username_label = tk.Label(root, text="Username:", font = ())
+        username_label = tk.Label(root, text="Username:", font=('Cascadia Code SemiBold', 12))
         username_entry = tk.Entry(root, textvariable = user_var)
         username_label.pack()
         username_entry.pack()
