@@ -18,11 +18,11 @@ def initial_page():
     def create_login_field():
         button.destroy()
         buttontwo.destroy()
-        username_label = tk.Label(root, text="Username:", font=('Cascadia Code SemiBold', 12))
+        username_label = tk.Label(root, text="Username:", font=('Lucida Sans Unicode', 8))
         username_entry = tk.Entry(root, textvariable = user_var)
         username_label.pack()
         username_entry.pack()
-        password_label = tk.Label(root, text="Password:")
+        password_label = tk.Label(root, text="Password:",font=('Lucida Sans Unicode', 8))
         password_entry = tk.Entry(root,textvariable=pass_var,show="*")
         password_label.pack()
         password_entry.pack()
@@ -30,11 +30,11 @@ def initial_page():
     def create_account_field():
         button.destroy()
         buttontwo.destroy()
-        newuser_label = tk.Label(root, text="Create Username:")
+        newuser_label = tk.Label(root, text="Create Username:",font=('Lucida Sans Unicode', 8))
         newuser_entry = tk.Entry(root, textvariable = newuser_var)
-        newpass_label = tk.Label(root, text = "Create Password:")
+        newpass_label = tk.Label(root, text = "Create Password:",font=('Lucida Sans Unicode', 8))
         newpass_entry = tk.Entry(root, textvariable = newpass_var, show = "*")
-        verifypass_label = tk.Label(root, text = "Verify Password:")
+        verifypass_label = tk.Label(root, text = "Verify Password:",font=('Lucida Sans Unicode', 8))
         verifypass_entry = tk.Entry(root, textvariable = verifypass_var, show = "*")
         newuser_label.pack()
         newuser_entry.pack()
@@ -48,11 +48,11 @@ def initial_page():
             widget.destroy()
         initial_page()
 
-    button = tk.Button(root, text = "Login", command = create_login_field)
+    button = tk.Button(root, text = "Login", command = create_login_field,font=('Lucida Sans Unicode', 8))
     button.pack()
-    buttontwo = tk.Button(root, text = "Create Account",command = create_account_field)
+    buttontwo = tk.Button(root, text = "Create Account",command = create_account_field,font=('Lucida Sans Unicode', 8))
     buttontwo.pack()
-    back_button = tk.Button(root, text = "Back", command = go_back)
+    back_button = tk.Button(root, text = "Back", command = go_back,font=('Lucida Sans Unicode', 8))
 
 
 def login():
