@@ -8,6 +8,10 @@ root.title("Secure Login Page")
 root.geometry("300x200")
 root.configure(background="black")
 
+users = {}
+
+
+#Entry field input variables
 user_var = tk.StringVar()
 pass_var = tk.StringVar()
 newuser_var = tk.StringVar()
@@ -61,6 +65,9 @@ def create_account():
     pass
 def forgot_password():
     pass
+def landing_page():
+    pass
+
 
 #runs the program above
 initial_page()
