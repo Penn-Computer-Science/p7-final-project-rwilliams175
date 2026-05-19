@@ -1,6 +1,11 @@
 #cybersecurity focused secure login page using tkinter for ui
 import tkinter as tk
 from tkinter import font
+from tkinter import messagebox
+import hashlib
+import json
+import os
+
 
 #create the main window
 root = tk.Tk()
@@ -8,7 +13,24 @@ root.title("Secure Login Page")
 root.geometry("300x200")
 root.configure(background="black")
 
-users = {}
+USERS_FILE = "users.json"
+
+def load_user():
+    if os.path.exists(USERS_FILE):
+        file = open(USERS_FILE, "r")
+        users = json.load(file)
+        file.close()
+        return users
+    return {}
+    
+def save_users(users):
+    file = open(USERS_FILE, "w")
+    json.dump(users, file)
+    file.close()
+
+def hash_password(password):
+    hashed = hashlib.sha256(password.encode())
+    return hashed.hexdigest()
 
 
 #Entry field input variables
@@ -60,7 +82,20 @@ def initial_page():
 
 
 def login():
-    pass
+    username = user_var.get()
+    password = pass_var.get()
+
+    if username == "" or password == "":
+        messagebox.showwarning("Login","Please enter a username or password")
+        return
+    users = load_user()
+    if username not in users:
+        messagebox.showerror("Login","Username not found")
+        return
+    messagebox.showinfo("Login","Welcome ", + username + "!")
+
+
+
 def create_account():
     pass
 def forgot_password():
