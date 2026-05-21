@@ -6,7 +6,6 @@ import hashlib
 import json
 import os
 
-
 #create the main window
 root = tk.Tk()
 root.title("Secure Login Page")
@@ -14,6 +13,8 @@ root.geometry("300x200")
 root.configure(background="black")
 
 USERS_FILE = "users.json"
+
+fsociety = tk.PhotoImage(file="fsociety.png")
 
 def load_user():
     if os.path.exists(USERS_FILE):
@@ -93,15 +94,43 @@ def login():
         messagebox.showerror("Login","Username not found")
         return
     messagebox.showinfo("Login","Welcome ", + username + "!")
-
-
+    user_var.set("")
+    pass_var.set("")
+    landing_page()
 
 def create_account():
-    pass
+    username = newuser_var.get()
+    password = newpass_var.get()
+    verify = verifypass_var.get()
+
+    if username == "" or password == "" or verify == "":
+        messagebox.showwarning("Create Account", "All fields must filled out")
+        return
+    
+    if verify == password:
+        messagebox.showerror("Create Account", "Passwords must match")
+        return
+    
+    users = load_user
+
+    if username in users:
+        messagebox.showerror("Create Account", "Username already taken")
+        return
+    
+    users[username] = hash_password(password)
+    messagebox.showinfo("Create Account", "Account created successfully. You can now log in.")
+    newuser_var.set("")
+    newpass_var.set("")
+    verifypass_var.set("")
+
+    for widget in root.winfo_children():
+        widget.destroy()
+        initial_page()
+
 def forgot_password():
     pass
 def landing_page():
-    pass
+    tk.Label(image = fsociety).pack()
 
 
 #runs the program above
