@@ -133,6 +133,7 @@ def landing_page():
     tk.Label(image = fsociety).pack()
 
 
+
 #runs the program above
 initial_page()
 root.mainloop()
